@@ -4,7 +4,6 @@
  // 在 Azure 的連接字串
  var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10250/?ssl=true';
 
- var removeFamilies = function(db, callback) {};
 
  MongoClient.connect(url, function(err, db) {
 
