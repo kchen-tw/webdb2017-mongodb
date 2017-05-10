@@ -29,6 +29,17 @@ var insertDoc = function(data, db, collName) {
     });
 }
 
+// 更新資料
+var updateDoc = function(filter, data, db, collName) {
+
+    db.collection(collName).updateOne(filter, data, function(err, results) {
+        if (err) throw err;
+        console.log(data);
+        console.log("資料更新成功");
+        //console.log(results);
+    });
+}
+
 
 // 利用 MongoClient 連接 MongoDB Server
 MongoClient.connect(uri, function(err, db) {
@@ -40,14 +51,26 @@ MongoClient.connect(uri, function(err, db) {
 
     var collection_name = 'student';
 
-    // 新增一筆 document
-    insertDoc({
-        sid: 'B102345678',
-        name: '張三',
-    }, db, collection_name);
+//     // 新增一筆 document
+//     insertDoc({
+//         sid: 'B102345678',
+//         name: '張三',
+//     }, db, collection_name);
 
-    // 查詢 collection
-    findData(db, collection_name);
+//     // 查詢 collection
+//     findData(db, collection_name);
 
+    // 更新資料
+    var updateDoc = function(filter, data, db, collName) {
+
+        db.collection(collName).updateOne(filter, data, function(err, results) {
+            if (err) throw err;
+            console.log(data);
+            console.log("資料更新成功");
+            //console.log(results);
+        });
+    }
+
+    
     db.close();
 });
